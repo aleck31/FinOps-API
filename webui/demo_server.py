@@ -21,7 +21,7 @@ demo_app = FastAPI(
 @demo_app.get("/", response_class=HTMLResponse)
 async def demo_page():
     """返回演示页面"""
-    demo_file = Path(__file__).parent / "webui.html"
+    demo_file = Path(__file__).parent / "index.html"
     if demo_file.exists():
         return HTMLResponse(content=demo_file.read_text(encoding='utf-8'))
     else:
@@ -29,7 +29,7 @@ async def demo_page():
         <html>
             <body>
                 <h1>演示页面未找到</h1>
-                <p>请确保 webui.html 文件存在</p>
+                <p>请确保 index.html 文件存在</p>
             </body>
         </html>
         """)

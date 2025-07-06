@@ -2,18 +2,6 @@
 
 基于FastAPI构建的AWS财务运营仪表板，为监控平台提供成本、预算和资源使用情况的数据接口和API服务演示界面。
 
-## 项目结构
-
-```
-finops/
-├── finops_api/     # API后端服务
-├── web_demo/       # Web演示页面
-├── scripts/        # 工具脚本
-├── tests/          # 测试脚本
-├── logs/           # 日志文件
-└── run.sh          # 项目管理脚本
-```
-
 ## API Endpoints - 五大核心FinOps指标
 
 ### 💰 成本管理
@@ -26,16 +14,16 @@ finops/
 - `GET /api/v1/budgets` - 预算信息
 - `GET /api/v1/budgets/{budget_name}` - 预算详情
 
-### 📈 资源监控
-- `GET /api/v1/metrics/ec2` - EC2指标
-- `GET /api/v1/metrics/rds` - RDS指标
-- `GET /api/v1/metrics/lambda` - Lambda指标
-
 ### 📋 资源清单
 - `GET /api/v1/inventory/ec2` - EC2实例清单
 - `GET /api/v1/inventory/rds` - RDS实例清单
 - `GET /api/v1/inventory/s3` - S3存储桶清单
 - `GET /api/v1/inventory/lambda` - Lambda函数清单
+
+### 📈 资源监控
+- `GET /api/v1/metrics/ec2` - EC2指标
+- `GET /api/v1/metrics/rds` - RDS指标
+- `GET /api/v1/metrics/lambda` - Lambda指标
 
 ### 🎯 优化建议
 - `GET /api/v1/optimization/trusted-advisor` - Trusted Advisor建议
@@ -45,6 +33,30 @@ finops/
 
 ### 📋 综合报告
 - `GET /api/v1/reports/cost-summary` - 成本汇总报告
+
+## 项目结构
+
+```
+finops/
+├── finops_api/     # API后端服务
+│   ├── main.py                   # 主应用入口 (支持直接运行)
+│   ├── config.py                 # 配置文件
+│   ├── models/                   # 数据模型
+│   │   └── response.py           # API响应模型
+│   ├── dependencies/             # 依赖注入
+│   │   └── clients/              # AWS客户端组件
+│   └── routers/                  # API路由 (按FinOps类别组织)
+│       ├── costs.py              # 💰 成本管理API
+│       ├── budgets.py            # 📊 预算监控API
+│       ├── metrics.py            # 📈 资源监控API
+│       ├── inventory.py          # 📋 资源清单API
+│       ├── optimization.py       # 🎯 优化建议API
+│       └── reports.py            # 📋 综合报告API
+├── webui/       # Web演示页面
+├── tests/          # 测试脚本
+├── logs/           # 日志文件
+└── run.sh          # 启动脚本
+```
 
 ## 快速开始
 
@@ -103,30 +115,4 @@ import requests
 # 获取成本数据
 response = requests.get("http://localhost:8000/api/v1/costs/daily?days=7")
 data = response.json()
-```
-
-## 项目架构
-
-```
-finops_api/
-├── main.py                    # 主应用入口 (支持直接运行)
-├── config.py                  # 配置文件
-├── models/                    # 数据模型
-│   └── response.py           # API响应模型
-├── dependencies/              # 依赖注入
-│   ├── __init__.py           # 依赖注入逻辑
-│   └── clients/              # AWS客户端组件
-│       ├── __init__.py       # 客户端导出
-│       ├── cost_explorer_client.py
-│       ├── cloudwatch_client.py
-│       ├── budgets_client.py
-│       ├── resource_inventory_client.py
-│       └── optimization_client.py
-└── routers/                   # API路由 (按FinOps类别组织)
-    ├── costs.py              # 💰 成本管理API
-    ├── budgets.py            # 📊 预算监控API
-    ├── metrics.py            # 📈 资源监控API
-    ├── inventory.py          # 📋 资源清单API
-    ├── optimization.py       # 🎯 优化建议API
-    └── reports.py            # 📋 综合报告API
 ```

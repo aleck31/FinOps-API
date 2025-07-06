@@ -13,7 +13,7 @@ NC='\033[0m' # No Color
 # 项目路径
 PROJECT_ROOT=$(pwd)
 API_DIR="$PROJECT_ROOT/finops_api"
-WEB_DIR="$PROJECT_ROOT/web_demo"
+WEB_DIR="$PROJECT_ROOT/webui"
 LOGS_DIR="$PROJECT_ROOT/logs"
 API_PID_FILE="$PROJECT_ROOT/api_server.pid"
 WEB_PID_FILE="$PROJECT_ROOT/web_server.pid"
