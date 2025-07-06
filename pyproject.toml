@@ -1,0 +1,32 @@
+[project]
+name = "finops-api"
+version = "1.0.0"
+description = "AWS FinOps API - 基于FastAPI构建的AWS成本和资源监控API"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+    {name = "FinOps Team", email = "finops@example.com"}
+]
+keywords = ["aws", "finops", "cost-management", "monitoring", "api"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: System :: Monitoring",
+]
+dependencies = [
+    "fastapi>=0.104.0",
+    "uvicorn[standard]>=0.24.0",
+    "boto3>=1.26.0",
+    "botocore>=1.29.0",
+    "python-dateutil>=2.8.0",
+    "pydantic>=2.0.0",
+    "python-multipart>=0.0.6",
+    "aiofiles>=23.0.0",
+    "requests>=2.28.0",
+    "aiohttp>=3.12.13",
+]

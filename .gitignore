@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual environment
+.venv/
+venv/
+
+# Project logs and runtime files
+logs/
+*.log
+*.pid
+api_server.pid
+web_server.pid
+
+# Environment specific
+withdraw/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# AWS credentials
+.aws/
+credentials
+
+# Temporary files
+todo.md
+*.tmp
+tmp/
